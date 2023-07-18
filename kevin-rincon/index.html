@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Ciudades</title> 
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style id="customTheme"></style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header class="header-prin" >
+      <div class="container-fluid logo-nav-container" >
+        <img src="./imgs/colombia.png" class="iconn">
+        <p href="#inicio" class="logo">GESTOR DE CIUDADES</p>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <div class="navegacion collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a href="#inicio" >INICIO</a></li>
+              <li class="nav-item"><a href="#qs">¿QUIENES SOMOS?</a></li>
+              <li class="nav-item"><a href="#contacto">CONTACTANOS</a></li>
+            </ul>
+          </div>
+          <button class="cambioFondo" onclick="shiftTema()"><img src="./imgs/tema.png" style="width: 20%; height: 30%;"></button>
+      </div>
+    </header> 
+  </nav>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./imgs/pexels-kelly-11815576.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Departamentos increibles</h5>
+            <p>CON CIUDADES MARAVILLOSAS</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./imgs/pexels-césar-gaviria-16637452.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Experiencias innolvidables</h5>
+            <p>EN DISTINTAS TIERRAS</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./imgs/pexels-catalina-carvajal-herrera-15487862.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Reunirse</h5>
+            <p>Y DISFRUTAR</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+  <h1 class="titus">CREA TUS DEPARTAMENTOS</h1>  
+  <div class="crearr">
+    <div class="contenedorCrear">
+      <div id="crear">
+          <input type="text" class="form-control int" id="inputNombre" placeholder="NOMBRE DEL DEPARTAMENTO">
+          <span id="llenarTodo" class="msg-error"></span>        
+          <button class="btn btn-secondary" onclick="crearDepartamento()">AGREGAR</button>
+      </div>
+    </div>
+    <div>
+      <table class="table table-striped" style="width: 800px;">
+        <thead>
+          <tr>   
+            <th>ID</th>
+            <th>NOMBRE</th>    
+            <th>EDITAR</th>  
+            <th>ELIMINAR</th>  
+          </tr>    
+        </thead>
+        <tbody class="table-dark" id="contenedorDepartamento">
+          
+        </tbody>
+      </table>
+    </div>  
+  </div>  
+  <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">EDITA TU DEPARTAMENTO</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="">
+            <input type="text" id="editarNombre" class="intD" placeholder="NOMBRE DEL DEPARTAMENTO">
+            <span id="llenarTodoEditar" class="msg-error"></span>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="subirDepartamento()">Guardar</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="alertContainer"></div>
+  <h1 class="titus">CREA TUS CIUDADES</h1>
+  <div class="contenedorintCiudades">
+    <div class="contenedorCrearCiudades">
+      <div id="crearCiudades">
+        <input type="text" class="ciudades" id="inputNombreCiudad" placeholder="NOMBRE DE LA CIUDAD" style="width: 500px;margin-bottom: 3%; background: rgb(196, 187, 187);">
+        <select class="form-select selectDepartamento" name="" id="inputIdCiudad" style="width: 500px; margin-bottom: 3%;">
+          <option value="">DEPARTAMENTO AL QUE PERTENECE</option>
+        </select>
+        <span id="llenarTodoPunto" class="msg-error"></span>
+        <button class="btn btn-secondary" style="margin-left: 38%; margin-top: 4%;" onclick="crearCiudad()">AGREGAR</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1 class="titus">CONSULTA LAS CIUDADES DE LOS DEPARTAMENTOS</h1>
+    <select class="form-select selectDepartamento" name="" id="departamentoSelect" style="width: 30%; margin-left: 33%;">
+      <option value="">SELECCIONA TU CIUDAD</option>
+    </select>
+  </div>  
+  <div id="contenedorCiudades">
+
+  </div>
+  <div class="modal fade" id="modalEditarCiudad" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">EDITA TU CIUDAD</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <input type="text" id="editarNombreCiudad" class="intP" placeholder="NOMBRE DE LA CIUDAD" style="width: 100%; margin-bottom: 4%; text-align: center;">
+            <select class="form-select selectDepartamento" name="" id="editarDepartamentoCiudad">
+              <option value="">DEPARTAMENTO AL QUE PERTENECE</option>
+            </select>
+            <span id="llenarTodoCiudadEditar" class="msg-error"></span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="subirCiudad()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-dark text-center text-white foot">
+    <div class="container p-4 ">
+      <section class="mb-4">
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-google"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href=""><i class="fab fa-github"></i></a>
+      </section>
+      <section>
+        <form>
+          <div class="row d-flex justify-content-center">
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>SIGUENOS EN NUESTRAS REDES</strong>
+              </p>
+            </div>
+            <div class="col-auto">
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+    <div class="text-center p-3">
+      © 2023 Kevin
+    </div>
+  </footer>  
+  <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
